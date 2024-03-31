@@ -19,7 +19,7 @@ const Model = ({
 }) => {
   //USESTATE
   const [name, setName] = useState("");
-  const [userAddress, setUserAddress] = useState(address);
+  const [userAddress, setUserAddress] = useState("");
 
   const { loading } = useContext(ChatAppContext);
   return (
@@ -48,7 +48,7 @@ const Model = ({
                 />
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="your name"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -56,7 +56,7 @@ const Model = ({
                 <Image src={images.account} alt="user" width={30} height={30} />
                 <input
                   type="text"
-                  placeholder={address || "Address.."}
+                  placeholder={address || "Enter address"}
                   onChange={(e) => setUserAddress(e.target.value)}
                 />
               </div>

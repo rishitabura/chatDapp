@@ -1,4 +1,4 @@
-// import "../styles/globals.css";
+import "../styles/globals.css";
 
 //INTERNAL IMPORT
 import { ChatAppProvider } from "../Context/ChatAppContext";

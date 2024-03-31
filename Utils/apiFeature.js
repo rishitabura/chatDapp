@@ -4,7 +4,7 @@ import Web3Modal from "web3modal";
 
 import { ChatAppAddress, ChatAppABI } from "../Context/constants";
 
-export const ChechIfWalletConnected = async () => {
+export const CheckIfWalletConnected = async () => {
   alert("Install MetaMask");
   try {
     if (!window.ethereum) return console.log("Install MetaMask");

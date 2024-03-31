@@ -17,6 +17,14 @@ const NavBar = () => {
     {
       menu: "Chats",
       link: "/",
+    },
+    {
+      menu: "Settings",
+      link: "/",
+    },
+    {
+      menu: "Account",
+      link: "/",
     }
   ];
 
@@ -121,9 +129,12 @@ const NavBar = () => {
             openBox={setOpenModel}
             title="Welcome To"
             head="Decentralised Chat App"
-            info=""
-            smallInfo="Please fill in your details...."
-            image={images.hero2}
+            info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi 
+            voluptas adipisci possimus laborum aperiam ad suscipit 
+            numquam ab animi nesciunt esse blanditiis alias cum 
+            provident perspiciatis repellat harum, fugit pariatur!"
+            smallInfo="Please fill in your details."
+            image={images.hero}
             functionName={createAccount}
             address={account}
           />
