@@ -1,15 +1,23 @@
-import React  from "react";
+"use client"
 
-import { Filter, Friend } from "../Components/index";
+import React, {useEffect, useState, useContext } from "react";
+// import "global.css";
+
+// import { Filter, Friend } from "../Components/index";
+import { ChatAppContext } from "../Context/ChatAppContext" 
 
 const ChatApp = () => {
-  // const {} = useContext(ChatAppContext);
-  return (
-    <div>
-      <Filter />
-      <Friend />
-    </div>
-  );
+
+  const {title} = useContext(ChatAppContext);
+
+  return <div>{title}</div>
+  // return (
+  //   <div>
+  //     {title}
+  //     {/* <Filter />
+  //     <Friend /> */}
+  //   </div>
+  // );
 };
 
 export default ChatApp;
