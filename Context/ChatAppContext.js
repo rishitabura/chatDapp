@@ -55,12 +55,15 @@ export const ChatAppProvider = ({ children }) => {
     try {
       //GET CONTRACT
       const contract = await connectingWithContract();
+      console.log(contract);
       //GET ACCOUNT
       const connectAccount = await connectWallet();
+      console.log(connectAccount);
       setAccount(connectAccount);
       //GET USER NAME
-      // const userName = await contract.getUsername(connectAccount);
-      // setUserName(userName);
+      const userName = await contract.getUsername(connectAccount);
+      console.log(userName);
+      setUserName(userName);
       //GET MY FRIEND LIST
       const friendLists = await contract.getMyFriendList();
       setFriendLists(friendLists);
@@ -97,7 +100,7 @@ export const ChatAppProvider = ({ children }) => {
       const contract = await connectingWithContract();
       // console.log(contract);
       const getCreatedUser = await contract.createAccount(name);
-
+      // console.log(getCreatedUser);
       setLoading(true);
       await getCreatedUser.wait();
       setLoading(false);
