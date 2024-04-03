@@ -14,7 +14,7 @@ export const ChatAppContext = React.createContext({});
 export const ChatAppProvider = ({ children }) => {
 
   // const title  = "Hey Welcome to blockchain chat app";
-  
+
   //USESTATE
   const [account, setAccount] = useState("");
   const [userName, setUserName] = useState("");
@@ -31,6 +31,28 @@ export const ChatAppProvider = ({ children }) => {
 
   const router = useRouter();
 
+  // //FETCH DATA TIME OF PAGE LOAD
+  // const fetchData = async () => {
+  //   try {
+  //     //GET CONTRACT
+  //     const contract = await connectingWithContract();
+  //     //GET ACCOUNT
+  //     const connectAccount = await connectWallet();
+  //     setAccount(connectAccount);
+  //     //GET USER NAME
+  //     // const userName = await contract.getUsername(connectAccount);
+  //     // setUserName(userName);
+  //     //GET MY FRIEND LIST
+  //     const friendLists = await contract.getMyFriendList();
+  //     setFriendLists(friendLists);
+  //     //GET ALL APP USER LIST
+  //     const userList = await contract.getAllAppUser();
+  //     setUserLists(userList);
+  //   } catch (error) {
+  //     setError("Please Install And Connect Your Wallet");
+  //     console.log(error);
+  //   }
+  // };
   //FETCH DATA TIME OF PAGE LOAD
   const fetchData = async () => {
     try {
@@ -51,16 +73,16 @@ export const ChatAppProvider = ({ children }) => {
     } catch (error) {
       setError("Please Install And Connect Your Wallet");
       console.log(error);
+      // console.log("Please Install And Connect Your Wallet");
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);
 
 
-   //READ MESSAGE
-   const readMessage = async (friendAddress) => {
+  //READ MESSAGE
+  const readMessage = async (friendAddress) => {
     try {
       const contract = await connectingWithContract();
       const read = await contract.readMessage(friendAddress);
@@ -71,9 +93,9 @@ export const ChatAppProvider = ({ children }) => {
   };
 
 
-   //CREATE ACCOUNT
-   const createAccount = async ({ name, accountAddress }) => {
-    // console.log(name, account);
+  //CREATE ACCOUNT
+  const createAccount = async ({ name, accountAddress }) => {
+    console.log(name, account);
     try {
       // if (name || accountAddress)
       //   return setError("Name And Account Address, cannot be empty");
@@ -87,7 +109,8 @@ export const ChatAppProvider = ({ children }) => {
       setLoading(false);
       window.location.reload();
     } catch (error) {
-      setError("Error while creating your account Please reload browser");
+      console.log("Error while creating account");
+      // setError("Error while creating your account Please reload browser");
     }
   };
 
@@ -133,24 +156,25 @@ export const ChatAppProvider = ({ children }) => {
   };
 
 
-  return(
+  return (
     <ChatAppContext.Provider value={
-      { readMessage, 
-      createAccount, 
-      addFriends, 
-      sendMessage,
-      readUser,
-      connectWallet,
-      CheckIfWalletConnected,
-      account,
-      userName,
-      friendLists,
-      friendMsg,
-      userLists,
-      loading,
-      error,
-      currentUserName,
-      currentUserAddress
+      {
+        readMessage,
+        createAccount,
+        addFriends,
+        sendMessage,
+        readUser,
+        connectWallet,
+        CheckIfWalletConnected,
+        account,
+        userName,
+        friendLists,
+        friendMsg,
+        userLists,
+        loading,
+        error,
+        currentUserName,
+        currentUserAddress
 
       }}>
 
@@ -159,3 +183,157 @@ export const ChatAppProvider = ({ children }) => {
   );
 
 };
+
+// import React, { useState, useEffect } from "react";
+// import { useRouter } from "next/router";
+
+// //INTERNAL IMPORT
+// import {
+//   ChechIfWalletConnected,
+//   connectWallet,
+//   connectingWithContract,
+// } from "../Utils/apiFeature";
+
+// export const ChatAppContext = React.createContext();
+
+// export const ChatAppProvider = ({ children }) => {
+//   //USESTATE
+//   const [account, setAccount] = useState("");
+//   const [userName, setUserName] = useState("");
+//   const [friendLists, setFriendLists] = useState([]);
+//   const [friendMsg, setFriendMsg] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [userLists, setUserLists] = useState([]);
+//   const [error, setError] = useState("");
+
+//   console.log(`FriendList: ${friendLists}`);
+
+//   //CHAT USER DATA
+//   const [currentUserName, setCurrentUserName] = useState("");
+//   const [currentUserAddress, setCurrentUserAddress] = useState("");
+
+//   const router = useRouter();
+
+//   //FETCH DATA TIME OF PAGE LOAD
+//   const fetchData = async () => {
+//     try {
+//       //GET CONTRACT
+//       const contract = await connectingWithContract();
+//       //GET ACCOUNT
+//       const connectAccount = await connectWallet();
+//       setAccount(connectAccount);
+//       //GET USER NAME
+//       // const userName = await contract.getUsername(connectAccount);
+//       // setUserName(userName);
+//       //GET MY FRIEND LIST
+//       const friendLists = await contract.getMyFriendList();
+//       setFriendLists(friendLists);
+//       //GET ALL APP USER LIST
+//       const userList = await contract.getAllAppUser();
+//       setUserLists(userList);
+//     } catch (error) {
+//       // setError("Please Install And Connect Your Wallet");
+//       console.log(error);
+//     }
+//   };
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   //READ MESSAGE
+//   const readMessage = async (friendAddress) => {
+//     try {
+//       const contract = await connectingWithContract();
+//       const read = await contract.readMessage(friendAddress);
+//       setFriendMsg(read);
+//     } catch (error) {
+//       console.log("Currently You Have no Message");
+//     }
+//   };
+
+//   //CREATE ACCOUNT
+//   const createAccount = async ({ name,  }) => {
+//     console.log(name, account);
+//     try {
+//       // if (name || account)
+//       //   return setError("Name And Account Address, cannot be empty");
+
+//       const contract = await connectingWithContract();
+//       console.log(contract);
+//       const getCreatedUser = await contract.createAccount(name);
+
+//       setLoading(true);
+//       await getCreatedUser.wait();
+//       setLoading(false);
+//       window.location.reload();
+//     } catch (error) {
+//       setError("Error while creating your account Pleas reload browser");
+//     }
+//   };
+
+//   //ADD YOUR FRIENDS
+//   const addFriends = async ({ name, userAddress }) => {
+//     try {
+//       // if (!name || !userAddress) return setError("Please provide data");
+//       const contract = await connectingWithContract();
+//       const addMyFriend = await contract.addFriend(userAddress, name);
+//       setLoading(true);
+//       await addMyFriend.wait();
+//       setLoading(false);
+//       router.push("/");
+//       window.location.reload();
+//     } catch (error) {
+//       setError("Something went wrong while adding friends, try again");
+//     }
+//   };
+
+//   //SEND MESSAGE TO YOUR FRIEND
+//   const sendMessage = async ({ msg, address }) => {
+//     console.log(msg, address);
+//     try {
+//       if (!msg || !address) return setError("Please Type your Message");
+
+//       const contract = await connectingWithContract();
+//       const addMessage = await contract.sendMessage(address, msg);
+//       setLoading(true);
+//       await addMessage.wait();
+//       setLoading(false);
+//       window.location.reload();
+//     } catch (error) {
+//       setError("Please reload and try again");
+//     }
+//   };
+
+//   //READ INFO
+//   const readUser = async (userAddress) => {
+//     const contract = await connectingWithContract();
+//     const userName = await contract.getUsername(userAddress);
+//     setCurrentUserName(userName);
+//     setCurrentUserAddress(userAddress);
+//   };
+//   return (
+//     <ChatAppContext.Provider
+//       value={{
+//         readMessage,
+//         createAccount,
+//         addFriends,
+//         sendMessage,
+//         readUser,
+//         connectWallet,
+//         ChechIfWalletConnected,
+//         account,
+//         userName,
+//         friendLists,
+//         friendMsg,
+//         userLists,
+//         loading,
+//         error,
+//         currentUserName,
+//         currentUserAddress,
+//       }}
+//     >
+//       {children}
+//     </ChatAppContext.Provider>
+//   );
+// };
+
