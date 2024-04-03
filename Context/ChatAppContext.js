@@ -8,11 +8,9 @@ import {
   connectingWithContract,
 } from "../Utils/apiFeature";
 
-
 export const ChatAppContext = React.createContext({});
 
 export const ChatAppProvider = ({ children }) => {
-
   // const title  = "Hey Welcome to blockchain chat app";
 
   //USESTATE
@@ -23,7 +21,6 @@ export const ChatAppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [userLists, setUserLists] = useState([]);
   const [error, setError] = useState("");
-
 
   //CHAT USER DATA
   const [currentUserName, setCurrentUserName] = useState("");
@@ -71,7 +68,6 @@ export const ChatAppProvider = ({ children }) => {
       const userList = await contract.getAllAppUser();
       setUserLists(userList);
     } catch (error) {
-      setError("Please Install And Connect Your Wallet");
       console.log(error);
       // console.log("Please Install And Connect Your Wallet");
     }
@@ -79,7 +75,6 @@ export const ChatAppProvider = ({ children }) => {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   //READ MESSAGE
   const readMessage = async (friendAddress) => {
@@ -91,7 +86,6 @@ export const ChatAppProvider = ({ children }) => {
       console.log("Currently You Have no Message");
     }
   };
-
 
   //CREATE ACCOUNT
   const createAccount = async ({ name, accountAddress }) => {
@@ -109,7 +103,7 @@ export const ChatAppProvider = ({ children }) => {
       setLoading(false);
       window.location.reload();
     } catch (error) {
-      console.log("Error while creating account");
+      throw new Error(error);
       // setError("Error while creating your account Please reload browser");
     }
   };
@@ -155,10 +149,9 @@ export const ChatAppProvider = ({ children }) => {
     setCurrentUserAddress(userAddress);
   };
 
-
   return (
-    <ChatAppContext.Provider value={
-      {
+    <ChatAppContext.Provider
+      value={{
         readMessage,
         createAccount,
         addFriends,
@@ -174,14 +167,12 @@ export const ChatAppProvider = ({ children }) => {
         loading,
         error,
         currentUserName,
-        currentUserAddress
-
-      }}>
-
+        currentUserAddress,
+      }}
+    >
       {children}
     </ChatAppContext.Provider>
   );
-
 };
 
 // import React, { useState, useEffect } from "react";
@@ -336,4 +327,3 @@ export const ChatAppProvider = ({ children }) => {
 //     </ChatAppContext.Provider>
 //   );
 // };
-
