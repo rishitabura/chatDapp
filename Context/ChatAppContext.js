@@ -71,7 +71,7 @@ export const ChatAppProvider = ({ children }) => {
       // const userList = await contract.getAllAppUser();
       // setUserLists(userList);
     } catch (error) {
-      // throw new Error(error);
+      throw new Error(error);
       console.log(error);
       // setError("Error while creating your account Please reload browser");
       
