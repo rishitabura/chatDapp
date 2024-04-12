@@ -55,22 +55,30 @@ export const ChatAppProvider = ({ children }) => {
     try {
       //GET CONTRACT
       const contract = await connectingWithContract();
+      console.log(contract);
       //GET ACCOUNT
       const connectAccount = await connectWallet();
+      console.log(connectAccount);
       setAccount(connectAccount);
       //GET USER NAME
+      const userName = await contract.getUsername(connectAccount);
+      console.log(userName);
+      setUserName(userName);
 
       const userName = await contract.getUsername(connectAccount);
 
       setUserName(userName);
       //GET MY FRIEND LIST
-      const friendLists = await contract.getMyFriendList();
-      setFriendLists(friendLists);
-      //GET ALL APP USER LIST
-      const userList = await contract.getAllAppUser();
-      setUserLists(userList);
+      // const friendLists = await contract.getMyFriendList();
+      // setFriendLists(friendLists);
+      // //GET ALL APP USER LIST
+      // const userList = await contract.getAllAppUser();
+      // setUserLists(userList);
     } catch (error) {
+      // throw new Error(error);
       console.log(error);
+      // setError("Error while creating your account Please reload browser");
+
       // console.log("Please Install And Connect Your Wallet");
     }
   };
@@ -96,9 +104,9 @@ export const ChatAppProvider = ({ children }) => {
       //   return setError("Name And Account Address, cannot be empty");
 
       const contract = await connectingWithContract();
-      // console.log(contract);
+      console.log(contract);
       const getCreatedUser = await contract.createAccount(name);
-
+      // console.log(getCreatedUser);
       setLoading(true);
       await getCreatedUser.wait();
       setLoading(false);
