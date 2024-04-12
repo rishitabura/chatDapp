@@ -74,7 +74,7 @@ export const ChatAppProvider = ({ children }) => {
       throw new Error(error);
       console.log(error);
       // setError("Error while creating your account Please reload browser");
-      
+
       // console.log("Please Install And Connect Your Wallet");
     }
   };
@@ -95,7 +95,6 @@ export const ChatAppProvider = ({ children }) => {
 
   //CREATE ACCOUNT
   const createAccount = async ({ name, accountAddress }) => {
-    console.log(name, account);
     try {
       // if (name || accountAddress)
       //   return setError("Name And Account Address, cannot be empty");
