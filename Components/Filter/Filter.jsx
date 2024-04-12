@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import Image from "next/image";
 
 import Style from "./Filter.module.css";
 import images from "../../assets";

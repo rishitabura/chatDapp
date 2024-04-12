@@ -17,14 +17,6 @@ const NavBar = () => {
     {
       menu: "Chats",
       link: "/",
-    },
-    {
-      menu: "Settings",
-      link: "/",
-    },
-    {
-      menu: "Account",
-      link: "/",
     }
   ];
 

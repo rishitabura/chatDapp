@@ -28,50 +28,28 @@ export const ChatAppProvider = ({ children }) => {
 
   const router = useRouter();
 
-  // //FETCH DATA TIME OF PAGE LOAD
-  // const fetchData = async () => {
-  //   try {
-  //     //GET CONTRACT
-  //     const contract = await connectingWithContract();
-  //     //GET ACCOUNT
-  //     const connectAccount = await connectWallet();
-  //     setAccount(connectAccount);
-  //     //GET USER NAME
-  //     // const userName = await contract.getUsername(connectAccount);
-  //     // setUserName(userName);
-  //     //GET MY FRIEND LIST
-  //     const friendLists = await contract.getMyFriendList();
-  //     setFriendLists(friendLists);
-  //     //GET ALL APP USER LIST
-  //     const userList = await contract.getAllAppUser();
-  //     setUserLists(userList);
-  //   } catch (error) {
-  //     setError("Please Install And Connect Your Wallet");
-  //     console.log(error);
-  //   }
-  // };
   //FETCH DATA TIME OF PAGE LOAD
   const fetchData = async () => {
     try {
       //GET CONTRACT
       const contract = await connectingWithContract();
-      console.log(contract);
+      // console.log(contract);
       //GET ACCOUNT
       const connectAccount = await connectWallet();
-      console.log(connectAccount);
+      // console.log(connectAccount);
       setAccount(connectAccount);
       //GET USER NAME
       const userName = await contract.getUsername(connectAccount);
-      console.log(userName);
+      // console.log(userName);
       setUserName(userName);
       //GET MY FRIEND LIST
-      // const friendLists = await contract.getMyFriendList();
-      // setFriendLists(friendLists);
+      const friendLists = await contract.getMyFriendList();
+      setFriendLists(friendLists);
       // //GET ALL APP USER LIST
-      // const userList = await contract.getAllAppUser();
-      // setUserLists(userList);
+      const userList = await contract.getAllAppUser();
+      setUserLists(userList);
     } catch (error) {
-      throw new Error(error);
+      // throw new Error(error);
       console.log(error);
       // setError("Error while creating your account Please reload browser");
 
@@ -108,17 +86,34 @@ export const ChatAppProvider = ({ children }) => {
       setLoading(false);
       window.location.reload();
     } catch (error) {
-      throw new Error(error);
-      // setError("Error while creating your account Please reload browser");
+      // throw new Error(error);
+      setError("Error while creating your account Please reload browser");
     }
   };
 
-  //ADD YOUR FRIENDS
-  const addFriends = async ({ name, accountAddress }) => {
+  // //ADD YOUR FRIENDS
+  // const addFriends = async ({ name, accountAddress }) => {
+  //   try {
+  //     // if (!name || !accountAddress) return setError("Please provide data");
+  //     const contract = await connectingWithContract();
+  //     const addMyFriend = await contract.addFriend(accountAddress, name);
+  //     setLoading(true);
+  //     await addMyFriend.wait();
+  //     setLoading(false);
+  //     router.push("/");
+  //     window.location.reload();
+  //   } catch (error) {
+  //     console.log(error);
+  //     setError("Something went wrong while adding friends, try again");
+  //   }
+  // };
+
+   //ADD YOUR FRIENDS
+   const addFriends = async ({ name, userAddress }) => {
     try {
-      if (!name || !accountAddress) return setError("Please provide data");
+      // if (!name || !userAddress) return setError("Please provide data");
       const contract = await connectingWithContract();
-      const addMyFriend = await contract.addFriend(accountAddress, name);
+      const addMyFriend = await contract.addFriend(userAddress, name);
       setLoading(true);
       await addMyFriend.wait();
       setLoading(false);
@@ -129,11 +124,12 @@ export const ChatAppProvider = ({ children }) => {
     }
   };
 
+
   //SEND MESSAGE TO YOUR FRIEND
   const sendMessage = async ({ msg, address }) => {
     // console.log(msg, address);
     try {
-      if (msg || address) return setError("Please Type your Message");
+      // if (msg || address) return setError("Please Type your Message");
 
       const contract = await connectingWithContract();
       const addMessage = await contract.sendMessage(address, msg);

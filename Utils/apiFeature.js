@@ -71,8 +71,31 @@ export const connectingWithContract = async () => {
   }
 };
 
-export const converTime = (time) => {
-  const newTime = new Date(time.toNumber());
+// export const converTime = (time) => {
+//   const newTime = new Date(time.toNumber());
+
+//   const realTime =
+//     newTime.getHours() +
+//     "/" +
+//     newTime.getMinutes() +
+//     "/" +
+//     newTime.getSeconds() +
+//     "  Date:" +
+//     newTime.getDate() +
+//     "/" +
+//     (newTime.getMonth() + 1) +
+//     "/" +
+//     newTime.getFullYear();
+
+//   return realTime;
+// };
+export const convertTime = (time) => {
+  // const newTime = new Date(time);
+   // Convert BigInt to milliseconds (number)
+   const milliseconds = Number(time); // This may lose precision for large BigInts
+
+   // Create a Date object from milliseconds
+   const newTime = new Date(milliseconds);
 
   const realTime =
     newTime.getHours() +

@@ -12,8 +12,8 @@ const ChatApp = () => {
   // return <div></div>
   return (
     <div>
-      {/* <Filter />
-      <Friend /> */}
+      <Filter />
+      <Friend />
     </div>
   );
 };
