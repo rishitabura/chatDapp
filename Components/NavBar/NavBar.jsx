@@ -73,7 +73,7 @@ const NavBar = () => {
 
               <p className={Style.mobile_menu_btn}>
                 <Image
-                  src={images.close}
+                  src={images.close1}
                   alt="close"
                   width={50}
                   height={50}
@@ -109,7 +109,7 @@ const NavBar = () => {
             className={Style.NavBar_box_right_open}
             onClick={() => setOpen(true)}
           >
-            <Image src={images.open} alt="open" width={30} height={30} />
+            <Image src={images.open1} alt="open" width={30} height={30} />
           </div>
         </div>
       </div>
@@ -121,12 +121,9 @@ const NavBar = () => {
             openBox={setOpenModel}
             title="Welcome To"
             head="Decentralised Chat App"
-            info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi 
-            voluptas adipisci possimus laborum aperiam ad suscipit 
-            numquam ab animi nesciunt esse blanditiis alias cum 
-            provident perspiciatis repellat harum, fugit pariatur!"
-            smallInfo="Please fill in your details."
-            image={images.hero}
+            info=""
+            smallInfo="Please fill in your details...."
+            image={images.hero2}
             functionName={createAccount}
             address={account}
           />

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
 
+//INTERNAL IMPORT
 import Style from "./Filter.module.css";
 import images from "../../assets";
 import { ChatAppContext } from "../../Context/ChatAppContext";
@@ -16,7 +17,7 @@ const Filter = () => {
       <div className={Style.Filter_box}>
         <div className={Style.Filter_box_right}>
           <button onClick={() => setAddFriend(true)}>
-            <Image src={images.user} alt="clear" width={20} height={20} />
+            <Image src={images.user2} alt="clear" width={20} height={20} />
             Add Friend
           </button>
         </div>

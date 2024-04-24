@@ -1,8 +1,12 @@
 .UserCard{
-    background-color: rgba(208, 206, 206, 0.25);
+    /* background-color: rgba(208, 206, 206, 0.25); */
+    /* background-color: #7d879e; */
+    background-color: #40A2E3;
+    opacity: 0.9;
     border-radius: .5rem;
     text-align: center;
     padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     position: relative;
 }
 
@@ -15,8 +19,13 @@
 }
 
 .UserCard_box_info button{
-    background-color: rgba(0, 0, 0, 0.25);
-    color: #f1ed03;
+    /* background-color: rgba(0, 0, 0, 0.25);   */
+    background-color: #EEF5FF;  
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    /* color: #f1ed03; */
+    color: black;
+    font-weight: bold;
     width: 50%;
     padding: 1rem;
     border: none;
@@ -30,6 +39,7 @@
     right: 1rem;
     padding: 1rem 1.3rem;
     border-radius: 50%;
-    background-color: #361697;
+    background-color: black;
     top: 1rem;
+    color: white;
 }

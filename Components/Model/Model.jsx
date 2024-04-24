@@ -19,7 +19,7 @@ const Model = ({
 }) => {
   //USESTATE
   const [name, setName] = useState("");
-  const [userAddress, setUserAddress] = useState("");
+  const [userAddress, setUserAddress] = useState(address);
 
   const { loading } = useContext(ChatAppContext);
   return (
@@ -41,22 +41,22 @@ const Model = ({
             <div className={Style.Model_box_right_name}>
               <div className={Style.Model_box_right_name_info}>
                 <Image
-                  src={images.username}
+                  src={images.user1}
                   alt="user"
                   width={30}
                   height={30}
                 />
                 <input
                   type="text"
-                  placeholder="your name"
+                  placeholder="Name"
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className={Style.Model_box_right_name_info}>
-                <Image src={images.account} alt="user" width={30} height={30} />
+                <Image src={images.address} alt="user" width={30} height={30} />
                 <input
                   type="text"
-                  placeholder={address || "Enter address"}
+                  placeholder={address || "Address.."}
                   onChange={(e) => setUserAddress(e.target.value)}
                 />
               </div>
@@ -64,14 +64,14 @@ const Model = ({
               <div className={Style.Model_box_right_name_btn}>
                 <button onClick={() => functionName({ name, userAddress })}>
                   {""}
-                  <Image src={images.send} alt="send" width={30} height={30} />
+                  <Image src={images.send1} alt="send" width={30} height={30} />
                   {""}
                   Submit
                 </button>
 
                 <button onClick={() => openBox(false)}>
                   {""}
-                  <Image src={images.close} alt="send" width={30} height={30} />
+                  <Image src={images.cancel} alt="send" width={30} height={30} />
                   {""}
                   Cancel
                 </button>

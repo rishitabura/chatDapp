@@ -24,7 +24,7 @@ const UserCard = ({ el, i, addFriends }) => {
               addFriends({ name: el.name, userAddress: el.accountAddress })
             }
           >
-            Add Friend
+            Friends
           </button>
         </div>
       </div>

@@ -35,11 +35,13 @@
 }
 
 .Filter_box_right button{
-    background-color: rgba(0,0,0,0.25);
+    /* background-color: rgba(0,0,0,0.25); */
+    background-color: black;
+    box-shadow: rgba(209, 180, 180, 0.35) 0px 5px 15px;
     outline: none;
     border: none;
     padding: 1rem 2rem;
-    color: #f18303;
+    color: white;
     border-radius: 2rem;
     font-weight: 700;
     display: flex;
@@ -51,7 +53,8 @@
 .Filter_model{
     position: fixed;
     inset: 0 0 0 0;
-    background-color: #292f3f;
+    /* background-color: #292f3f; */
+    background-color: #EEF5FF;
     z-index: 2222222222;
 }
 

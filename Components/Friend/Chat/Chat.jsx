@@ -52,11 +52,11 @@ const Chat = ({
           </div>
         </div>
       ) : (
-        "<-----------------Select a chat-----------------<"
+        "<-----------------Select a chat----------------->"
       )}
 
       <div className={Style.Chat_box_box}>
-        <div className={Style.Chat_box}>
+        {/* <div className={Style.Chat_box}>
           <div className={Style.Chat_box_left}>
             {friendMsg.map((el, i) => (
               <div>
@@ -83,7 +83,6 @@ const Chat = ({
                     />
                     <span>
                       {userName} {""}
-                      {/* <small>Time: {converTime(el.timestamp)}</small> */}
                       <small>Time: {convertTime(el.timestamp)}</small>
                     </span>
                   </div>
@@ -96,8 +95,45 @@ const Chat = ({
               </div>
             ))}
           </div>
+        </div> */}
+        <div className={Style.Chat_box}>
+          <div className={Style.Chat_box_left}>
+            {friendMsg.map((el, i) => (
+              <div key={i}> {/* Add a unique key for each message */}
+                {el.sender == chatData.address ? (
+                  <div className={Style.Chat_box_left_title}>
+                    <Image
+                      src={images.accountName}
+                      alt="image"
+                      width={50}
+                      height={50}
+                    />
+                    <span>
+                      {chatData.name} {""}
+                      <small>Time: {convertTime(el.timestamp)}</small>
+                    </span>
+                  </div>
+                ) : (
+                  <div className={Style.Chat_box_left_title}>
+                    <Image
+                      src={images.accountName}
+                      alt="image"
+                      width={50}
+                      height={50}
+                    />
+                    <span>
+                      {userName} {""}
+                      <small>Time: {convertTime(el.timestamp)}</small>
+                    </span>
+                  </div>
+                )}
+                <p key={i + 1}>
+                  {el.msg}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-
         {currentUserName && currentUserAddress ? (
           <div className={Style.Chat_box_send}>
             <div className={Style.Chat_box_send_img}>
@@ -110,7 +146,7 @@ const Chat = ({
                 <Loader />
               ) : (
                 <Image
-                  src={images.send}
+                  src={images.send1}
                   alt="file"
                   width={50}
                   height={50}
