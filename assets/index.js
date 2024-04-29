@@ -1,4 +1,5 @@
 import logo from "./logo.png";
+import logo1 from "./logo2.png";
 import close from "./close.png";
 import close1 from "./close1.png";
 import cancel from "./cancel.png";
@@ -40,6 +41,7 @@ import image10 from "./img10.gif";
 
 export default {
   logo,
+  logo1,
   close,
   close1,
   cancel,

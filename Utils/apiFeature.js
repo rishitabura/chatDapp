@@ -90,25 +90,52 @@ export const connectingWithContract = async () => {
 //   return realTime;
 // };
 export const convertTime = (time) => {
-  // const newTime = new Date(time);
-   // Convert BigInt to milliseconds (number)
-   const milliseconds = Number(time); // This may lose precision for large BigInts
+  // not working
+  // // const newTime = new Date(time);
+  //  // Convert BigInt to milliseconds (number)
+  //  const milliseconds = Number(time); // This may lose precision for large BigInts
 
-   // Create a Date object from milliseconds
-   const newTime = new Date(milliseconds);
+  //  // Create a Date object from milliseconds
+  //  const newTime = new Date(milliseconds);
 
-  const realTime =
-    newTime.getHours() +
-    ":" +
-    newTime.getMinutes() +
-    ":" +
-    newTime.getSeconds() +
-    "  Date:" +
-    newTime.getDate() +
-    "/" +
-    (newTime.getMonth() + 1) +
-    "/" +
-    newTime.getFullYear();
+  // const realTime =
+  //   newTime.getHours() +
+  //   ":" +
+  //   newTime.getMinutes() +
+  //   ":" +
+  //   newTime.getSeconds() +
+  //   "  Date:" +
+  //   newTime.getDate() +
+  //   "/" +
+  //   (newTime.getMonth() + 1) +
+  //   "/" +
+  //   newTime.getFullYear();
+  // return realTime;
 
-  return realTime;
+
+  //display current time - 
+  // const date = require('date-and-time');
+  // // Create a new Date object
+  // const now = new Date();
+  // // Format the date and time
+  // const formattedDate = date.format(now, 'YYYY/MM/DD HH:mm:ss');
+  // // Display the formatted date and time
+  // console.log(formattedDate);
+  // return formattedDate;
+
+
+  // month in words
+  const date = require('date-and-time');
+  // Create a new Date object
+  const now = new Date();
+  // Define the custom format for the month
+  const customMonthFormatter = date.compile('MMMM'); // This will give the full name of the month
+  // Format the date and time
+  const formattedDate = date.format(now, 'DD ' + customMonthFormatter + ' YY HH:mm:ss');
+  // Display the formatted date and time
+  console.log(formattedDate);
+  // return the formatted date
+  return formattedDate;
+
+  
 };
